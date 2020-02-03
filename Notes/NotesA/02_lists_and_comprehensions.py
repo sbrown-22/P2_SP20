@@ -48,7 +48,7 @@ print(sum(my_num_list))  # sums the list
 print(my_list.index("Cam"))  # returns the index (# in list) of the found object
 my_list.append("Cam")  # two Cams?
 print(my_list.index("Cam"))  # only returns first one
-print(my_list.count("Abe")) # counts them
+print(my_list.count("Abe"))  # counts them
 
 my_list.append("Deb")
 my_list.sort()  # orders the list
@@ -83,7 +83,7 @@ print(my_list + my_num_list)
 for name in my_list:
     print(name)
 
-# INDEX VARIABLE LOOP (works directly with the list using indexes
+# INDEX VARIABLE LOOP (works directly with the list using indexes)
 for i in range(len(my_list)):
     my_list[i] = my_list[i].upper()  # or .lower
     print(my_list[i])
@@ -165,9 +165,4 @@ if "Par" in last:  # checks if in list
 
 for letter in first:
     print(letter)
-
-
-
-
-
 
