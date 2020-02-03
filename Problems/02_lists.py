@@ -61,12 +61,15 @@ def most_common(num_list):
 print(most_common(num_list))
 
 '''
+Other stuff I tried that didn't work:
+
+#1 
 num_list.sort()
 for num in num_list:
     print([[x, num_list.count(x)] for x in set(num_list)])
 print(max(num_list[1]))
 
-
+#2
 new_list = num_list
 num_mode = new_list[0]
 previous_frequency = 0
@@ -95,6 +98,8 @@ prime_numbers = len(num_list)
 print(prime_numbers)
 
 '''
+Also tried:
+
 for num in range(min(num_list), max(num_list)):
     if num > 1:
         for n in range(2, num):
@@ -106,6 +111,12 @@ for num in range(min(num_list), max(num_list)):
 
 # Find the number of palindromes
 # Hint: This may be easier to do with strings
+'''
+palindrome_list = []
+for num in num_list:
+    num.reverse()
+    print(num)
+'''
 
 
 
