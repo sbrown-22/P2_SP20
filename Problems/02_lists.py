@@ -97,6 +97,7 @@ for i in range(2, 9993):
 prime_numbers = len(num_list)
 print(prime_numbers)
 
+
 '''
 Also tried:
 
@@ -111,14 +112,32 @@ for num in range(min(num_list), max(num_list)):
 
 # Find the number of palindromes
 # Hint: This may be easier to do with strings
-'''
+
 palindrome_list = []
+reverse = 0
+
 for num in num_list:
-    num.reverse()
-    print(num)
+    val = int(num)
+    if num == str(num)[::-1]:
+        palindrome_list.append(num)
+print(len(palindrome_list))
+
 '''
+Another way I found:
 
+palindrome_list = []
+reverse = 0
 
+for num in num_list:
+    while num > 0:
+        Reminder = num % 10
+        reverse = (reverse * 10) + Reminder
+        num = num // 10
+
+        if num == reverse:
+            palindrome_list.append(num)
+print(len(palindrome_list))
+'''
 
 
 
