@@ -53,23 +53,6 @@ print(top_ten)
 # PROBLEM 4 (4pts)
 # Find the number which appears most often in num_list?
 
-from statistics import mode
-
-def most_common(num_list):
-    return (mode(num_list))
-
-print(most_common(num_list))
-
-'''
-Other stuff I tried that didn't work:
-
-#1 
-num_list.sort()
-for num in num_list:
-    print([[x, num_list.count(x)] for x in set(num_list)])
-print(max(num_list[1]))
-
-#2
 new_list = num_list
 num_mode = new_list[0]
 previous_frequency = 0
@@ -80,7 +63,6 @@ for num in new_list:
         num_mode = num
         previous_frequency = current_frequency
 print(num_mode)
-'''
 
 # CHALLENGE PROBLEMS (2pts)
 # TOUGH PROBLEMS, BUT FEW POINTS
@@ -91,14 +73,16 @@ print(num_mode)
 num_list.sort()
 for i in range(2, 9993):
     for num in num_list:
-        if num % i == 0:
+        if num == i:
+            continue
+        elif num % i == 0:
             del num_list[num_list.index(num)]
 
 prime_numbers = len(num_list)
 print(prime_numbers)
 
-
 '''
+
 Also tried:
 
 for num in range(min(num_list), max(num_list)):
@@ -110,34 +94,18 @@ for num in range(min(num_list), max(num_list)):
                 print(num)
 '''
 
+
 # Find the number of palindromes
 # Hint: This may be easier to do with strings
 
-palindrome_list = []
-reverse = 0
+palindrome = 0
 
 for num in num_list:
-    val = int(num)
-    if num == str(num)[::-1]:
-        palindrome_list.append(num)
-print(len(palindrome_list))
+    num = str(num)
+    if num[0] == num[3] and num[1] == num[2]:
+        palindrome += 1
 
-'''
-Another way I found:
-
-palindrome_list = []
-reverse = 0
-
-for num in num_list:
-    while num > 0:
-        Reminder = num % 10
-        reverse = (reverse * 10) + Reminder
-        num = num // 10
-
-        if num == reverse:
-            palindrome_list.append(num)
-print(len(palindrome_list))
-'''
+print(palindrome)
 
 
 
