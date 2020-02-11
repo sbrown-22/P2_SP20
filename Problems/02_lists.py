@@ -18,7 +18,7 @@ print(my_list)
 # d) Make a list of all positive numbers in my_list below.
 my_list = [-77, -78, 82, 81, -40, 2, 62, 65, 74, 48, -37, -52, 90, -84, -79, -45, 47, 60, 35, -18]
 
-my_list = [x for x in my_list if x % 2 == 0]
+my_list = [x for x in my_list if x > 0]
 print(my_list)
 
 # PROBLEM 2 (Import the number list - 3pts)
@@ -45,7 +45,6 @@ print(sum(num_list) / len(num_list))
 num_list.remove(min(num_list))
 
 # Create and print a new list called top_ten which contains only the 10 highest numbers in num_list (2pts)
-top_ten = []
 num_list.sort()
 top_ten = num_list[-10:]
 print(top_ten)
@@ -63,6 +62,25 @@ for num in new_list:
         num_mode = num
         previous_frequency = current_frequency
 print(num_mode)
+
+'''
+OR
+
+count = 0
+number = 0
+
+for n in num_list:
+    if num_list.count(n) > count:
+    count = mum_list.count(n)
+    number = n
+
+print(number, "occurred", count, "times.")
+
+OR
+
+count_list = [num_list.count(x) for x in num_list]
+print(num_list[count_list.index(max(count_list))])
+'''
 
 # CHALLENGE PROBLEMS (2pts)
 # TOUGH PROBLEMS, BUT FEW POINTS
@@ -82,8 +100,17 @@ prime_numbers = len(num_list)
 print(prime_numbers)
 
 '''
+OR
 
-Also tried:
+def is_prime(n):
+    for i in range(2, n // 2):
+        if n % i == 0:
+            return False
+    return True
+
+# then run function on each number in list
+
+NOT CORRECT ATTEMPT:
 
 for num in range(min(num_list), max(num_list)):
     if num > 1:
@@ -107,6 +134,16 @@ for num in num_list:
 
 print(palindrome)
 
+'''
+string_list = [str(x) for x in num_list]
 
+def is_palindrome(my_string):
+    for i in range(len(my_string)):
+        if my_string[i] != my_string[-i - 1]:
+            return False
+    return True
+
+# etc., run through each number in list
+'''
 
 
