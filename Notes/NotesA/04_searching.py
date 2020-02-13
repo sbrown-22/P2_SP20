@@ -120,6 +120,8 @@ for line in file:
     line = line.strip().upper()
     # print(line.split())
 
-
+# LENGTH OF EACH WORD, TAKE THE MAX, RETURN INDEX OF THAT
+# list of lengths, find index of longest length
+# go through dictionary, if length longer than previous high, then reassign high to new number
 
 
