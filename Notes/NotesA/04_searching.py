@@ -1,6 +1,7 @@
 # Searching
 
 # use forward slashes to go into folders and .. to go "up" a folder
+
 file = open('../resources/super_villains.txt', 'r')  # open to read
 print(file)
 
@@ -101,19 +102,23 @@ if found:
 else:
     print(key, "was not found")
 
-'''
-# GIFTED FUNCTION
-# returns a list of words in each line
 
-import re  # regular expression
+# reading in Alice in Wonderland
+import re
+
 
 def split_line(line):
-    return re.findall('[A-Za-z]+(?:\'[A-Za-z]+)?', line)
+    # returns a list of all the words in line
+    return re.findall('[A-Za-z]+(?:\'[A-Za-z+]+)?', line)
 
-my_text = "Hello, this is Aaron's phone!"
-print(split_line(my_text))
-'''
 
+print(split_line("Hello, I don't know you!"))
+
+file = open("../resources/alice_in_wonderland")
+
+for line in file:
+    line = line.strip().upper()
+    # print(line.split())
 
 
 
