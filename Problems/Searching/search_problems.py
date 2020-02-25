@@ -118,18 +118,23 @@ print(frequency_cat)
 
 # How many times does "Cheshire" immediately followed by "Cat" occur?
 
-# frequency_cheshire_cat = 0
+cheshire_cat = 0
+
+key = "Cheshire".upper()
 with open('AliceInWonderland.txt') as file:
     for line in file:
         line = line.strip().upper()
         words = split_line(line)
+        i = 0
+        while i < (len(words) - 1) and key.upper() != words[i]:
+            i += 1
+        if i < len(words) - 1:
+            if words[i + 1] == "cat".upper():
+                cheshire_cat += 1
 
-'''
-        for word in words:
-            if word.upper() == "CHESHIRE" and word.upper()[-1] == "CAT":
-                frequency_cheshire_cat += 1
+print(cheshire_cat)
 
-print(frequency_cheshire_cat)
-'''
+
+
 
 
