@@ -84,4 +84,27 @@ print(my_list)
 my_list.sort(reverse=True)
 print(my_list)
 
+# use a lambda as the key
+my_2dlist = [[random.randrange(1, 100), random.randrange(1, 100)] for x in range(100)]
+my_2dlist.sort()
+print(my_2dlist)
+
+        # sorting by different things
+my_2dlist.sort(key=lambda x: x[1])  # sorts by second item in list
+print(my_2dlist)
+
+print()
+my_2dlist.sort(key=lambda x: sum(x))
+print(my_2dlist)
+
+my_2dlist.sort(key=lambda x: abs(x[0] - x[1]))
+print(my_2dlist)
+
+my_2dlist.sort(key=lambda x: abs(x[0] - x[1]), reverse=True)  # reversed the above, now smallest difference at the end
+print(my_2dlist)
+
+# sorted function (returns a new list)
+new_list = sorted(my_2dlist, key=lambda x: sum(x))
+print(new_list) # sorted by sum
+print(my_2dlist)  # now different from the above (still sorted by the difference)
 
