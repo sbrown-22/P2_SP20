@@ -105,6 +105,6 @@ print(my_2dlist)
 
 # sorted function (returns a new list)
 new_list = sorted(my_2dlist, key=lambda x: sum(x))
-print(new_list) # sorted by sum
+print(new_list)  # sorted by sum
 print(my_2dlist)  # now different from the above (still sorted by the difference)
 
