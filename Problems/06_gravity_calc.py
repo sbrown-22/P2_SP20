@@ -32,6 +32,7 @@ while not done:
         print("You can't divide by zero. Try again.")
     except:
         print()
+        
         print("Unknown error. Try again.")
 
 print()
