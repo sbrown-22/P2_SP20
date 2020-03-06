@@ -3,13 +3,13 @@ import turtle
 
 my_turtle = turtle.Turtle()
 my_turtle.shape("turtle")
-my_turtle.speed(0)
+my_turtle.speed(0)  # can you make it slower??
 
 my_screen = turtle.Screen()
 my_screen.bgcolor('white')
 
 # draw a shape using goto
-my_turtle.fillcolor('red')
+my_turtle.fillcolor('cyan')
 my_turtle.begin_fill()  # starts a shape to fill in
 my_turtle.goto(200, 0)
 my_turtle.goto(200, 200)
@@ -21,7 +21,7 @@ my_turtle.end_fill()
 my_turtle.up()
 my_turtle.goto(-200, -200)
 my_turtle.down()
-my_turtle.fillcolor('blue')
+my_turtle.fillcolor('red')
 my_turtle.begin_fill()
 my_turtle.goto(0, 0)
 my_turtle.goto(0, -200)
@@ -34,7 +34,7 @@ my_turtle.goto(0,0)
 my_turtle.down()
 my_turtle.width(4)
 
-my_turtle.fillcolor('yellow')
+my_turtle.fillcolor('orange')
 my_turtle.begin_fill()
 my_turtle.setheading(90)  # turtle heading to North
 
@@ -50,7 +50,7 @@ my_turtle.home()
 
 def recursive_rect(width, height, depth):
     if depth > 0:
-        my_turtle.width(depth)
+        my_turtle.width(depth)  # making lines smaller as boxes get smaller
         my_turtle.up()
         my_turtle.goto(width / 2, height / 2)  # top right
         my_turtle.down()

@@ -1,9 +1,11 @@
 #  Recursion - function calling itself
 
+
 def f():
     print("f")
-    #  f()  # similar to an infinte loop, but different.  RecursionDepthError
+    #  f()  # similar to an infinite loop, but different.  RecursionDepthError
     print("END")
+
 
 f()  # function calling itself (we had to comment it out)
 
@@ -12,18 +14,21 @@ def g():
     print("g")
     f()
 
+
 g()
+
+# ____________________________________________________________________________
 
 
 # Controlling recursion with depth
 def controlled(depth, max_depth):
     print("Recursion depth:", depth)
-    if depth < max_depth:
+    if depth < max_depth:  # while the depth is still under the max value...
         controlled(depth + 1, max_depth)
     print("Recursion depth", depth, "has closed.")
 
-controlled(0, 10)
 
+controlled(0, 10)
 
 # Fibonacci Sequence  0, 1, 1, 2, 3, 5, 8, 13, 21, 34
 
@@ -41,6 +46,3 @@ controlled(0, 10)
 #         return fibonacci_recursion(n - 1) + fibonacci_recursion(n - 2)
 #
 # fibonacci_recursion(10)
-
-
-
