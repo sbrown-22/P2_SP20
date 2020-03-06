@@ -62,5 +62,33 @@ def recursive_rect(width, height, depth):
 
 recursive_rect(800, 500, 10)
 
+my_screen.clear()
+my_turtle.home()
+
+def ncaa(x, y, width, height, depth):
+    if depth > 0:  # not done
+        my_turtle.up()
+        my_turtle.goto(x, y)
+        my_turtle.down()  # start drawing
+
+        # draw top
+        my_turtle.goto(x, y + height / 2)
+        my_turtle.goto(x + width, y + height / 2)
+
+        my_turtle.up()
+        my_turtle.goto(x, y)
+        my_turtle.down()
+
+        # draw bottom
+        my_turtle.goto(x, y - height / 2)
+        my_turtle.goto(x + width, y - height / 2)
+
+        # calling it more
+        ncaa(x + width, y + height / 2, width, height / 2, depth - 1)
+        ncaa(x + width, y - height / 2, width, height / 2, depth - 1)
+
+
+ncaa(-300, 0, 100, 300, 6)
+
 my_screen.exitonclick()
 
