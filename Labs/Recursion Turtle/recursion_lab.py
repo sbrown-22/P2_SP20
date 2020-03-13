@@ -15,6 +15,7 @@ my_screen.bgcolor('white')
 
 my_turtle.home()
 
+
 def h_letter(x, y, width, height, depth):
 
     if depth > 0:
