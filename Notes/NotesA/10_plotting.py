@@ -3,7 +3,8 @@ import random
 
 plt.figure(1)  # create a new window/plot
 
-plt.plot([120, 40, 10, 0])  # plot y against the index
+
+plt.plot([120, 40, 10, 0])  # plot y against the index (all the y coordinates for every 1 x point)
 plt.plot([1, 2, 3, 4, 5, 6], [1, 4, 9, 16, 25, 36])  # plot x vs y
 
 plt.figure(2)  # make second window
