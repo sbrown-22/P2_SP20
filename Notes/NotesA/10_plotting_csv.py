@@ -43,7 +43,6 @@ plt.title("Sulzer Visitors by Month", fontsize=20, color='blue')
 plt.ylabel("Visitors")
 plt.axis([-1, 12, 0, 40000])  # [xmin, xmax, ymin, ymax]
 
-
 # Starting over with just header and data
 # plot top 10 libraries for YTD totals
 plt.figure(2, tight_layout=True, figsize=(14, 6))  # figsize in inches
