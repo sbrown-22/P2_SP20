@@ -13,7 +13,6 @@ header = data.pop(0)
 #  print(data)
 print(header)
 
-print(data[0])
 names = [x[0] for x in data]
 print(names)
 
@@ -37,12 +36,12 @@ print(month_names)
 plt.figure(1, tight_layout=True)  # tight_layout makes everything fit in figure
 
 # plt.plot(month_numbers, sulzer_by_month)
-plt.bar(month_numbers, sulzer_by_month)
+plt.plot(month_numbers, sulzer_by_month)
 plt.xticks(month_numbers, month_names, rotation=75)
 
 plt.title("Sulzer Visitors by Month", fontsize=20, color='blue')
 plt.ylabel("Visitors")
-plt.axis([-1, 12, 0, 40000]) # [xmin, xmax, ymin, ymax]
+plt.axis([-1, 12, 0, 40000])  # [xmin, xmax, ymin, ymax]
 
 
 # Starting over with just header and data
