@@ -1,23 +1,28 @@
 """
 Reading a csv from a url
-Comma Separated Values from a Uniform Resource Locator
+Comma Separated Values (CSV) from a Uniform Resource Locator (URL)
 
-scatter plot sizes and color
+scatter plot w/ sizes and colors
 """
 import csv
 import requests
 import matplotlib.pyplot as plt
 
+
 def get_data(url):
-    with requests.Session() as s:
-        download = s.get(url)
-        content = download.content.decode('utf-8')
-        reader = csv.reader(content.splitlines(), delimiter=',')
-        my_list = list(reader)
-    return my_list
+    with requests.Session() as s:  # making a class object out of Request library
+        download = s.get(url)  # download data
+        content = download.content.decode('utf-8')  # way to format text
+        reader = csv.reader(download.splitlines(),
+                            delimiter=',')  # or content.splitlines(), the comma makes it plit data iby commas
+        data = list(reader)
+    return data
 
 
-data = get_data("https://data.cityofchicago.org/api/views/xq83-jr8c/rows.csv?accessType=DOWNLOAD")
+# so that we can get updated data each time
+
+url = "https://data.cityofchicago.org/api/views/xq83-jr8c/rows.csv?accessType=DOWNLOAD"
+data = get_data(url)
 header = data.pop(0)
 
 print(header)
@@ -26,37 +31,43 @@ ghg_index = header.index("Total GHG Emissions (Metric Tons CO2e)")
 sqft_index = header.index("Gross Floor Area - Buildings (sq ft)")
 type_index = header.index("Primary Property Type")
 
-
 valid_data = []
 print(len(data))
 
-for building in data:
+for building in data:  # rebuilding list
     try:
-        int(building[ghg_index])
-        int(building[sqft_index])
-        if building[type_index] == "K-12 School":
+        float(building[ghg_index])
+        float(building[sqft_index])
+        if building[type_index] == "K-12 School" and building[0] == "2018":
             valid_data.append(building)
     except:
         pass
 
 print(len(valid_data))
 
-ghg = [int(x[ghg_index]) for x in valid_data]
+valid_data.sort(key=lambda x: float(x[ghg_index + 1]))
+
+ghg = [float(x[ghg_index]) for x in valid_data]
+sqft = [float(x[sqft_index]) for x in valid_data]
+
+
+colors = ["green" for x in valid_data]
+for i in range(37):
+    colors[i] = "red"
+
+'''
 color = []
-for building in ghg:
+
+for building in valid_data:
     if building > 4000:
         color.append("red")
     else:
         color.append("green")
+'''
 
+plt.figure("GHG School Plot")
+# plt.figure(1, tight_layout=True)
 
-sqft = [int(x[sqft_index]) for x in valid_data]
-
-
-
-plt.figure(1, tight_layout=True)
-
-plt.scatter(sqft, ghg, alpha=0.3, c=color)  # s for size, c for color (arrays
-plt.legend()
+plt.scatter(ghg, sqft, alpha=0.3, c=colors)  # s for size, c for color (arrays
 
 plt.show()

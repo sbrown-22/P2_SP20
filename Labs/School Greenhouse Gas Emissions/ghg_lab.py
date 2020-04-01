@@ -48,6 +48,43 @@ with open("Chicago_Energy_Benchmarking (2).csv") as f:
 header = data.pop(0)
 print(header)
 
+ghg_index = header.index("Total GHG Emissions (Metric Tons CO2e)")
+sqft_index = header.index("Gross Floor Area - Buildings (sq ft)")
+type_index = header.index("Primary Property Type")
+
+valid_data = []
+print(len(data))
+
+for building in data:
+    try:
+        float(building[ghg_index])
+        float(building[sqft_index])
+        if building[type_index] == "K-12 School" and building[0] == "2018":
+            valid_data.append(building)
+    except:
+        pass
+
+print(len(valid_data))
+
+ghg = [float(x[ghg_index]) for x in valid_data]
+sqft = [float(x[sqft_index]) for x in valid_data]
+
+plt.figure(1, tight_layout=True, figsize=(14, 7))
+
+plt.scatter(sqft, ghg, alpha=0.3)  # s for size, c for color (arrays)
+
+plt.ylabel("GHG Emissions")
+plt.xlabel("Square Footage")
+plt.title("GHG Emissions vs. Square Footage (K-12 schools in 2018)")
+
+
+plt.show()
+
+
+
+'''
+WHAT I TRIED BEFORE LEARNING THE NEW WAY:
+
 school = ["K-12 School"]  # probably a better way to do this
 year = ["2018"]
 
@@ -76,21 +113,6 @@ plt.scatter(square_footage, ghg_emissions)
 plt.ylabel("GHG Emissions")
 plt.xlabel("Square Footage")
 plt.title("GHG Emissions vs. Square Footage (K-12 schools)")
-
-plt.show()
-
-'''
-for i in range(len(names)):
-    plt.annotate(names[i], xy=(firearm_100[i], homicide_100k[i]))
-
-p = np.polyfit(firearm_100, homicide_100k, 1)  # (x, y, poly_order) 1st order is linear
-print(p)  # returns (m, b) (slope, y intercept)
-
-# line of best fit - can kind of predict
-x = [x for x in range(100)]  # 0 to 99, make data to plot
-y = [p[0] * y + p[1] for y in x]  # this is the equation of the line, for every y in the x
-
-plt.plot(x, y)
 
 plt.show()
 
