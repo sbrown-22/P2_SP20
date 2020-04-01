@@ -1,4 +1,3 @@
-
 '''
 Greenhouse gas emissions (GHG) vs. square footage for all school buildings in Chicago
 
@@ -38,4 +37,61 @@ Maybe you can try one of the following or think up your own:
 Note 2:  This is a tough assignment to do on your own.  Do your best with what you have.  We will do
 '''
 
+import csv
+import matplotlib.pyplot as plt
+import numpy as np
 
+with open("Chicago_Energy_Benchmarking (2).csv") as f:
+    reader = csv.reader(f)  # , delimiter="\t"
+    data = list(reader)
+
+header = data.pop(0)
+print(header)
+
+school = ["K-12 School"]  # probably a better way to do this
+year = ["2018"]
+
+ghg_emissions = []
+square_footage = []
+
+school_data = [x for x in data if x[9] in school]
+# print(school_data)
+
+year_school = [x for x in school_data if x[0] in year]
+# print(year_school)
+
+
+for school in year_school:
+    try:
+        emissions = float(school[24])
+        footage = float(school[10])
+        emissions.append(ghg_emissions)
+        footage.append(square_footage)
+    except:
+        print(school[9], "invalid data")  # idk
+
+plt.figure("GHG Lab", figsize=(12, 6))
+plt.scatter(square_footage, ghg_emissions)
+
+plt.ylabel("GHG Emissions")
+plt.xlabel("Square Footage")
+plt.title("GHG Emissions vs. Square Footage (K-12 schools)")
+
+plt.show()
+
+'''
+for i in range(len(names)):
+    plt.annotate(names[i], xy=(firearm_100[i], homicide_100k[i]))
+
+p = np.polyfit(firearm_100, homicide_100k, 1)  # (x, y, poly_order) 1st order is linear
+print(p)  # returns (m, b) (slope, y intercept)
+
+# line of best fit - can kind of predict
+x = [x for x in range(100)]  # 0 to 99, make data to plot
+y = [p[0] * y + p[1] for y in x]  # this is the equation of the line, for every y in the x
+
+plt.plot(x, y)
+
+plt.show()
+
+'''
