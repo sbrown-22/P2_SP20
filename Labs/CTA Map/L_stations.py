@@ -27,6 +27,53 @@ with open('CTA_-_System_Information_-_List_of__L__Stops (1).csv') as f:
 cta_map = folium.Map(location=[41.8781, -87.6298], zoom_start=11)  # , titles='Stamen Toner'
 
 print(data.pop(0))
+lat_longs = [eval(x[-1]) for x in data]
+# print(lat_longs[0])
+
+colors = []
+names = [x[2] for x in data]
+
+'''
+for i in range(6, 16):
+    data[stop][i] = eval(data[stop][i].title())
+print(type(data[0][10]))
+'''
+
+for stop in data:
+    if stop[7]:
+        colors.append('red')
+    if stop[8]:
+        colors.append('blue')
+    if stop[9]:
+        colors.append('green')
+    if stop[10]:
+        colors.append('beige')  # (brown)
+    if stop[11]:
+        colors.append('red')
+    if stop[11] or stop[12]:
+        colors.append('purple')
+    if stop[13]:
+        colors.append('lightgray')  # purple express
+    if stop[14]:
+        colors.append('pink')
+    if stop[15]:
+        colors.append('orange')
+    else:
+        colors.append('black')
+
+# print(lat_longs[0])
+
+for i in range(len(lat_longs)):
+    folium.Marker(location=lat_longs[i],
+                  popup='<b>'+names[i]+'</b>',
+                  icon=(folium.Icon(prefix='fa', icon='train', color=colors[i]))
+                  ).add_to(cta_map)
+
+
+cta_map.save('train-map.html')
+
+
+# _______________ stuff I tried before: _______________
 
 '''
 lats = [float(x[-3]) for x in data]
@@ -40,7 +87,7 @@ for i in range (len(data)):
                   ).add_to(cta_map)
 '''
 
-
+'''
 lat_longs = [eval(x[-1]) for x in data]
 names = [x[2] for x in data]
 
@@ -66,6 +113,7 @@ for i in range(len(data)):
                   popup='<b>{}</b></span>'.format(names[i]),
                   icon=folium.Icon(color='orange', icon='train', prefix='fa')
                   ).add_to(cta_map)
+'''
 
 '''
 for i in range(len(lat_longs)):
@@ -77,5 +125,4 @@ for i in range(len(lat_longs)):
     longs = lat_longs[i][1]
 '''
 
-cta_map.save('train-map.html')
 

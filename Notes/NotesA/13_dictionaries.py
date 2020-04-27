@@ -69,4 +69,5 @@ print(community.values())
 print(list(community.values()))
 
 # dictionary to tract values
+my_dictionary = {x for x in range(10)}
 
