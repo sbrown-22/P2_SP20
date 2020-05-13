@@ -57,7 +57,7 @@ iso_and_rank = df3.loc[:, ['ISO code', 'Rank by rate of ownership']]
 print(type(iso_and_rank))
 
 
-# WORLD CUP - USING CONSOLE
+# WORLD CUP
 
 import pandas as pd
 x = 5
@@ -125,4 +125,13 @@ df['Total Half-Time Goals']
 max_half = df['Total Half-Time Goals'].max()
 
 df.loc[df['Total Half-Time Goals'] == max_half]
+
+
+
+
+#
+
+
+
+
 
