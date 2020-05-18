@@ -125,13 +125,3 @@ df['Total Half-Time Goals']
 max_half = df['Total Half-Time Goals'].max()
 
 df.loc[df['Total Half-Time Goals'] == max_half]
-
-
-
-
-#
-
-
-
-
-
